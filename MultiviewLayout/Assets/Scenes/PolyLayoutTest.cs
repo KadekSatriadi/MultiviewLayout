@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MultiViewLayout;
 
 public class PolyLayoutTest : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PolyLayoutTest : MonoBehaviour
         poly.Register(v0);
         poly.UpdateLayout();
 
-        foreach(View v in poly.Views)
+        foreach(View v in poly.Views())
         {
             GameObject t = GameObject.CreatePrimitive(PrimitiveType.Cube);
             t.name = "V" + v.Level;
@@ -131,7 +132,7 @@ public class PolyLayoutTest : MonoBehaviour
         GameObject g = GameObject.Find(name);
         if (g != null)
         {
-            View view = poly.Views[transforms.IndexOf(g)];
+            View view = poly.Views()[transforms.IndexOf(g)];
             return view;
         }
         else
@@ -150,9 +151,9 @@ public class PolyLayoutTest : MonoBehaviour
 
 
         poly.UpdateLayout();
-        foreach (View v in poly.Views)
+        foreach (View v in poly.Views())
         {
-            GameObject t = transforms[poly.Views.IndexOf(v)];
+            GameObject t = transforms[poly.Views().IndexOf(v)];
             t.transform.position = v.Position;
             t.transform.localScale = new Vector3(v.Width, v.Height, 1);
         }

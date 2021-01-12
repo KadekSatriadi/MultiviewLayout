@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MultiViewLayout;
 
 public class PolyZoomTest : MonoBehaviour
 {
@@ -327,7 +328,7 @@ public class PolyZoomTest : MonoBehaviour
         GameObject g = GameObject.Find(name);
         if (g != null)
         {
-            View view = poly.Views[transforms.IndexOf(g)];
+            View view = poly.Views()[transforms.IndexOf(g)];
             return view;
         }
         else
